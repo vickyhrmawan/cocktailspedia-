@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p style="font-size: 60px">Cocktailspedia!</p>
+    <p style="font-size: 50px">Cocktailspedia!</p>
     <div>
       <input type="text" v-model="searchedText" @keyup="searchDrinks" placeholder="Search your favorite drink" style="margin-bottom:20px">
     </div>
