@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p style="font-size: 50px">Cocktailspedia!</p>
+    <p style="font-size: 45px; font-family: Poppins">Cocktailspedia</p>
     <div>
-      <input type="text" v-model="searchedText" @keyup="searchDrinks" placeholder="Search your favorite drink" style="margin-bottom:20px">
+      <input type="text" v-model="searchedText" @keyup="searchDrinks" placeholder="Search your favorite drink" style="margin-bottom:20px; border-radius:10px">
     </div>
     <div>
   <b-carousel
@@ -15,13 +15,21 @@
     v-if="showCarousel"
   >
     <b-carousel-slide
-      caption="First slide"
-      img-src="https://picsum.photos/1024/480/?image=10"
-    ></b-carousel-slide>
+      :caption="mojito.strDrink"
+      :img-src="mojito.strDrinkThumb"
+      style="height:480px"
+      
+    >
+    <button @click="buttonCarousel">Check our recommendation!</button>
+    </b-carousel-slide>
     <b-carousel-slide
-      caption="Second Slide"
-      img-src="https://picsum.photos/1024/480/?image=12"
-    ></b-carousel-slide>
+      :caption="longIsland.strDrink"
+      :img-src="longIsland.strDrinkThumb"
+      style="height:480px;"
+
+    >
+    <button @click="buttonCarousel2">Check our recommendation!</button>
+    </b-carousel-slide>
   </b-carousel>
 </div>
     <b-container class="bv-example-row">
@@ -114,7 +122,15 @@ export default {
     clickMethod(item){
       const index = this.info.indexOf(item)
       this.itemID = this.info[index].idDrink
-      this.$router.push({ name: 'Details', params: {item : this.itemID } });
+      this.$router.push({ name: 'details', params: {item : this.itemID } });
+    },
+
+    buttonCarousel(){
+      this.$router.push({ name: 'details', params: {item : this.mojito.idDrink } })
+    },
+
+    buttonCarousel2(){
+      this.$router.push({ name: 'details', params: {item : this.longIsland.idDrink } })
     }
   }
 

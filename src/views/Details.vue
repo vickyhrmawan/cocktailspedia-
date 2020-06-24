@@ -1,14 +1,14 @@
 <template>
   <div class="details">
     <div class="mt-4" v-for="items in details" :key="items.id" >
-      <h1>{{items.strDrink}}</h1>
       <b-row>
         <b-col>
           <div>
             <b-img thumbnail fluid rounded :src="items.strDrinkThumb"  alt="Responsive image" width="300px"></b-img>
           </div>
         </b-col>
-        <b-col>
+        <b-col  sm="6" >
+          <h1 >{{items.strDrink}}</h1>
           <h2>Ingredients</h2>
           <div v-for="index in 15" :key="index" >
             <li  v-if="items[`strMeasure${index}`] !== null">
@@ -55,6 +55,7 @@ export default {
   },
 
   mounted(){
+    console.log('dari rpouter', this.$route.params.item)
     this.getDetails()
     console.log(this.item)
   },
